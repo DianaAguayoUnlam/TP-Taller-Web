@@ -59,7 +59,7 @@ public class Test_TP extends SpringTest{
 	
 	}
 	
-//	4- Hacer con junit un test que busque todos los paises cuya capital están al norte del tropico de cancer.
+//	4- Hacer con junit un test que busque todos los paises cuya capital estan al norte del tropico de cancer.
 
 
 	@SuppressWarnings("unchecked")
