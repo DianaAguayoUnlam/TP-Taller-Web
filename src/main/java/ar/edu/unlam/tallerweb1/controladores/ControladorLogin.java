@@ -25,15 +25,15 @@ public class ControladorLogin {
 	
 //Punto del tp ********************************************************
 
-@RequestMapping("/MostrarCadena/{NombreMetodo}/{texto}")
-public ModelAndView metodoA(@PathVariable("NombreMetodo") String metodo, @PathVariable ("texto") String texto)
+@RequestMapping("/MostrarCadena/{NombreOperacion}/{texto}")
+public ModelAndView metodoA(@PathVariable("NombreOperacion") String operacion, @PathVariable ("texto") String texto)
 {
 
 	ModelMap modelo = new ModelMap();
 	String var="";
 	int var2 = 0;
 	
-switch(metodo)
+switch(operacion)
 {
 	case "PasarAMayuscula":
 		
@@ -44,13 +44,15 @@ switch(metodo)
 	case "PasarAMinuscula":
 		
 		var = texto.toLowerCase();
+
 		break;
 		
 	case "InvertirOrden":
 		
 		for (int i = texto.length()-1; i>=0; i--){
-           var = texto + texto.charAt(i);
+           	var = texto + texto.charAt(i);
 		}
+
            break;
 	
 		
@@ -61,13 +63,15 @@ switch(metodo)
 		texto.replaceAll(" ", "");
 		var2 = texto.length();
 		var = Integer.toString(var2); 
+
+		break;
 }
 
 
 modelo.put("metodo", metodo);
 modelo.put("texto", texto);
 modelo.put("resultado", var);
-return new ModelAndView("MostrarMetodo",modelo);
+return new ModelAndView("MostrarCadena",modelo);
 }
 
 
