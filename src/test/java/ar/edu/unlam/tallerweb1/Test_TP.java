@@ -16,7 +16,7 @@ import ar.edu.unlam.tallerweb1.modelo.Ubicacion;
 
 public class Test_TP extends SpringTest{
 	
-//	2- Hacer con junit un test que busque todos los países de habla inglesa.
+//	2- Hacer con junit un test que busque todos los paÃ­ses de habla inglesa.
 	
 	@Test
 	@Transactional
@@ -34,17 +34,17 @@ public class Test_TP extends SpringTest{
 		}		
 	}
 	
-//	3- Hacer con junit un test que busque todos los países del continente europeo
+//	3- Hacer con junit un test que busque todos los paÃ­ses del continente europeo
 	@Test
 	@Transactional
 	@Rollback(true)
-	public void Test_Que_busca_todos_los_paises_europeos(){
+	public void TestQueBuscaTodosLosPaisesEuropeos(){
 		Continente mic = new Continente();
 		mic.setNombre("Europa");
 		getSession().save(mic);
 		
 		Pais mip2 = new Pais();
-		mip2.setNombre("España");
+		mip2.setNombre("EspaÃ±a");
 		mip2.setContinente(mic);
 		getSession().save(mip2);
 		
@@ -59,14 +59,14 @@ public class Test_TP extends SpringTest{
 	
 	}
 	
-//	4- Hacer con junit un test que busque todos los países cuya capital están al norte del trópico de cáncer.
+//	4- Hacer con junit un test que busque todos los paÃ­ses cuya capital estÃ¡n al norte del trÃ³pico de cÃ¡ncer.
 
 
 	@SuppressWarnings("unchecked")
 	@Test
 	@Transactional
 	@Rollback(true)
-	public void Test_que_busque_todos_los_países_cuya_capital_están_al_norte_del_trópico(){
+	public void TestQueBusqueTodosLosPaÃ­sesCuyaCapitalEstanAlNorteDelTropico(){
 		
 		Pais mip = new Pais();
 		Ubicacion miu = new Ubicacion();
@@ -119,7 +119,7 @@ public class Test_TP extends SpringTest{
 		@Transactional
 		@Rollback(true)
 		
-		public void Test_Ciudades_Hemisferio_Sur(){
+		public void TestCiudadesHemisferioSur(){
 			
 			Ciudad mic = new Ciudad();
 			mic.setNombre("Cordoba");
