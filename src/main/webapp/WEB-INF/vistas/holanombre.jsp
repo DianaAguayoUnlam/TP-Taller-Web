@@ -7,11 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>Hola</h1>
-
-<form action="irAgregarPersona" method="get">
-<button type="submit"> Agregar Persona</button>
-</form>
-
+			<h1> Hola ${nombre} </h1>
 </body>
 </html>

@@ -25,6 +25,8 @@ public class Pais {
 	//probando one to many
 //	@OneToMany
 //	private List<Ciudad> ciudad;
+
+	
 	
 	@ManyToOne
 	private Continente continente;

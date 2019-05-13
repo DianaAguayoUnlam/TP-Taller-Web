@@ -7,11 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>Hola</h1>
-
-<form action="irAgregarPersona" method="get">
-<button type="submit"> Agregar Persona</button>
-</form>
-
+		<h1>El usuario ${usuario1.email} y tiene el rol de ${usuario1.rol}</h1>
+		<h1>El usuario ${usuario2.email} y tiene el rol de ${usuario2.rol}</h1>
 </body>
 </html>
