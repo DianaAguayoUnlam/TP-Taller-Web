@@ -16,7 +16,7 @@ import ar.edu.unlam.tallerweb1.modelo.Ubicacion;
 
 public class Test_TP extends SpringTest{
 	
-//	2- Hacer con junit un test que busque todos los países de habla inglesa.
+//	2- Hacer con junit un test que busque todos los paises de habla inglesa.
 	
 	@Test
 	@Transactional
@@ -34,7 +34,7 @@ public class Test_TP extends SpringTest{
 		}		
 	}
 	
-//	3- Hacer con junit un test que busque todos los países del continente europeo
+//	3- Hacer con junit un test que busque todos los paises del continente europeo
 	@Test
 	@Transactional
 	@Rollback(true)
@@ -59,7 +59,7 @@ public class Test_TP extends SpringTest{
 	
 	}
 	
-//	4- Hacer con junit un test que busque todos los países cuya capital están al norte del trópico de cáncer.
+//	4- Hacer con junit un test que busque todos los paises cuya capital están al norte del tropico de cancer.
 
 
 	@SuppressWarnings("unchecked")
