@@ -68,7 +68,7 @@ switch(operacion)
 }
 
 
-modelo.put("metodo", metodo);
+modelo.put("nombreOperacion", operacion);
 modelo.put("texto", texto);
 modelo.put("resultado", var);
 return new ModelAndView("MostrarCadena",modelo);
