@@ -14,14 +14,14 @@ import ar.edu.unlam.tallerweb1.modelo.Continente;
 import ar.edu.unlam.tallerweb1.modelo.Pais;
 import ar.edu.unlam.tallerweb1.modelo.Ubicacion;
 
-public class Test_TP extends SpringTest{
+public class TestTP extends SpringTest{
 	
 //	2- Hacer con junit un test que busque todos los países de habla inglesa.
 	
 	@Test
 	@Transactional
 	@Rollback(true)
-	public void Test_Que_Busca_paises_de_habla_inglesa(){
+	public void TestQueBuscapaisesdeHablaInglesa(){
 		Pais mip= new Pais();
 		mip.setIdioma("ingles");
 		getSession().save(mip);
