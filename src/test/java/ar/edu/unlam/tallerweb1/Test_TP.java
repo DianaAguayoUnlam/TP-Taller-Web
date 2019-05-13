@@ -66,7 +66,7 @@ public class TestTP extends SpringTest{
 	@Test
 	@Transactional
 	@Rollback(true)
-	public void TestQueBusqueTodosLosPaísesCuyaCapitalEstanAlNorteDelTropico(){
+	public void TestQueBusqueTodosLosPaisesCuyaCapitalEstanAlNorteDelTropico(){
 		
 		Pais mip = new Pais();
 		Ubicacion miu = new Ubicacion();
