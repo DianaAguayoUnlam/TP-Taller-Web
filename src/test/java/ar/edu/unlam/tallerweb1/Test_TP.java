@@ -14,7 +14,7 @@ import ar.edu.unlam.tallerweb1.modelo.Continente;
 import ar.edu.unlam.tallerweb1.modelo.Pais;
 import ar.edu.unlam.tallerweb1.modelo.Ubicacion;
 
-public class TestTP extends SpringTest{
+public class Test_TP extends SpringTest{
 	
 //	2- Hacer con junit un test que busque todos los países de habla inglesa.
 	
