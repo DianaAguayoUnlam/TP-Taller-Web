@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<p>El resultado de ${metodo} sobre ${texto} es ${resultado}</p>
+<p>El resultado de ${Operacion} sobre ${texto} es ${resultado}</p>
 
 </body>
 </html>
