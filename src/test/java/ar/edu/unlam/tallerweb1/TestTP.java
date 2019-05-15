@@ -22,15 +22,26 @@ public class TestTP extends SpringTest{
 	@Transactional
 	@Rollback(true)
 	public void TestQueBuscaPaisesDeHablaInglesa(){
-		Pais mip= new Pais();
-		mip.setIdioma("ingles");
-		getSession().save(mip);
+		Pais mip1= new Pais();
+		Pais mip2 = new Pais ();
+		Pais mip3 = new Pais ();
+		
+		mip1.setIdioma("Ingles");
+		mip2.setIdioma("Arabe");
+		mip3.setIdioma("Portugues");
+		
+		getSession().save(mip1);
+		getSession().save(mip2);
+		getSession().save(mip3);
+		
+	
+		
 		
 		List<Pais>paises= getSession().createCriteria(Pais.class)
-				.add(Restrictions.like("idioma", "ingles")).list();
+				.add(Restrictions.like("idioma", "Ingles")).list();
 		
 		for(Pais p :paises){
-		assertThat(p.getIdioma()).isEqualTo("ingles");
+		assertThat(p.getIdioma()).isEqualTo("Ingles");
 		}		
 	}
 	
@@ -39,22 +50,41 @@ public class TestTP extends SpringTest{
 	@Transactional
 	@Rollback(true)
 	public void TestQueBuscaTodosLosPaisesEuropeos(){
-		Continente mic = new Continente();
-		mic.setNombre("Europa");
-		getSession().save(mic);
 		
-		Pais mip2 = new Pais();
-		mip2.setNombre("España");
-		mip2.setContinente(mic);
+		Pais mip1 = new Pais ();
+		Pais mip2 = new Pais ();
+		Pais mip3 = new Pais ();
+		
+		Continente mic1 = new Continente ();
+		Continente mic2 = new Continente ();
+		Continente mic3 = new Continente ();
+		
+		mip1.setContinente(mic1);
+		mip2.setContinente(mic2);
+		mip3.setContinente(mic3);
+		
+		mic1.setNombre("Europa");
+		mic2.setNombre("America");
+		mic3.setNombre("Africa");
+		
+		getSession().save(mip1);
 		getSession().save(mip2);
+		getSession().save(mip3);
+		
+		getSession().save(mic1);
+		getSession().save(mic2);
+		getSession().save(mic3);
 		
 		
-		List<Pais> paises = getSession().createCriteria(Pais.class)
-				.createAlias("continente", "continenteBuscado")
-				.add(Restrictions.like("continenteBuscado.nombre","Europa"))
+		
+		
+		List <Pais> paises = getSession().createCriteria(Pais.class)
+				.createAlias("continente", "ContinenteBuscado")
+				.add(Restrictions.like("ContinenteBuscado.nombre", "Europa"))
 				.list();
+		
 			for(Pais p: paises){
-			assertThat(p.getContinente().getNombre()).isEqualTo(mic.getNombre());
+				assertThat(p.getContinente().getNombre()).isEqualTo("Europa");
 		}
 	
 	}
@@ -68,44 +98,76 @@ public class TestTP extends SpringTest{
 	@Rollback(true)
 	public void TestQueBusqueTodosLosPaisesCuyaCapitalEstanAlNorteDelTropico(){
 		
-		Pais mip = new Pais();
-		Ubicacion miu = new Ubicacion();
-		Ciudad mic = new Ciudad();
-		
-		//Pais
-		mip.setNombre("Pais1");;
-		mip.setCapital(mic);
-		
-		//Ciudad
-		mic.setNombre("Ciudad1");
-		
-		mic.setUbicacion(miu);
+		Pais mip1 = new Pais();
+		Pais mip2 = new Pais();
+		Pais mip3 = new Pais();
+
+		Ciudad mic1 = new Ciudad();
+		Ciudad mic2 = new Ciudad();
+		Ciudad mic3 = new Ciudad();
+	
+		Ubicacion miu1 = new Ubicacion();
+		Ubicacion miu2 = new Ubicacion();
+		Ubicacion miu3 = new Ubicacion();
 	
 		
-		//Ubicacion
-		miu.setLatitud(3344);
-		miu.setLongitud(4433);
-		
-		//save
-		getSession().save(mip);
-		getSession().save(mic);
-		getSession().save(miu);
+		mip1.setNombre("Canada");
+		mip2.setNombre("Indonesia");
+		mip3.setNombre("Noruega");
 		
 		
-		List<Pais> mipa = getSession().createCriteria(Pais.class)
-				.createAlias("capital", "CiudadBuscada")
-				.createAlias("CiudadBuscada.ubicacion", "UbicacionBuscada")
-				.add(Restrictions.ge("UbicacionBuscada.latitud", miu.getLatitud()))
-				.add(Restrictions.ge("UbicacionBuscada.longitud", miu.getLongitud()))
-				.list();
+		mic1.setNombre("Montreal");
+		mic2.setNombre("Ottawa");
+		mic3.setNombre("Yakarta");
+		
+		mic1.setPais(mip1);
+		mic2.setPais(mip1);
+		mic3.setPais(mip2);
+		
+		mip1.setCapital(mic1);
+		mip2.setCapital(mic2);
+		mip3.setCapital(mic3);
+		
+		//Montreal
+		miu1.setLatitud(45.508889);
+		miu1.setLongitud(-73.561667);
+		//Ottawa
+		miu2.setLatitud(45.424722); 
+		miu2.setLongitud(-75.695);
+		//Yakarta
+		miu3.setLatitud(-6.21462); 
+		miu3.setLongitud(106.84513);
+		
+		mic1.setUbicacion(miu1);
+		mic2.setUbicacion(miu2);
+		mic3.setUbicacion(miu3);
+		
+//Valor del tropico de Cancer
+		Double tropicoCancer = 23.43722222222222;
+				
+				getSession().save(mic1);
+				getSession().save(mic2);
+				getSession().save(mic3);
+				
+				getSession().save(miu1);
+				getSession().save(miu2);
+				getSession().save(miu3);
+				
+				getSession().save(mip1);
+				getSession().save(mip2);
+				getSession().save(mip3);
 
+		
+		List <Pais> mipa = getSession().createCriteria(Pais.class)
+				.createAlias("capital", "CapitalBuscada")
+				.createAlias("CapitalBuscada.ubicacion", "UbicacionBuscada")
+				.add(Restrictions.gt("UbicacionBuscada.latitud", tropicoCancer))
+				.list();
+		
+		
 		for(Pais p: mipa)
 		{
-			assertThat(p.getCapital().getUbicacion().getLatitud()).isEqualTo(miu.getLatitud());
-			System.out.println(p.getCapital().getUbicacion().getLatitud());
-			
-			assertThat(p.getCapital().getUbicacion().getLongitud()).isEqualTo(miu.getLongitud());
-			System.out.println(p.getCapital().getUbicacion().getLongitud());
+			assertThat(p.getCapital().getUbicacion().getLatitud()).isGreaterThan(tropicoCancer);
 		}
 	
 	
@@ -121,36 +183,45 @@ public class TestTP extends SpringTest{
 		
 		public void TestCiudadesHemisferioSur(){
 			
-			Ciudad mic = new Ciudad();
-			mic.setNombre("Cordoba");
+			Ciudad mic1 = new Ciudad();
+			Ciudad mic2 = new Ciudad();
+			Ciudad mic3 = new Ciudad();
 			
+			Ubicacion miu1 = new Ubicacion();
+			Ubicacion miu2 = new Ubicacion();
+			Ubicacion miu3 = new Ubicacion();
 			
-			Ubicacion miu = new Ubicacion();
-			miu.setLatitud(-4);
-			miu.setLongitud(-5);
+			miu1.setLatitud(12.555897);
+			miu2.setLatitud(-81.75125);
+			miu3.setLatitud(32.4544855);
 			
-			mic.setUbicacion(miu);
+			mic1.setUbicacion(miu1);
+			mic2.setUbicacion(miu2);
+			mic3.setUbicacion(miu3);
 			
+			getSession().save(mic1);
+			getSession().save(mic2);
+			getSession().save(mic3);
 			
-			getSession().save(mic);
-			getSession().save(miu);
+
+			getSession().save(miu1);
+			getSession().save(miu2);
+			getSession().save(miu3);
+		
+			
+			//El hemisferio sur se encuentra por debajo del Ecuador, el cual tiene una latitud de 0
+			Double ecuador = 0.0;
 				
-				List<Ciudad> miciu = getSession().createCriteria(Ciudad.class)
-				.createAlias("ubicacion", "CiudadBuscada")
-				.add(Restrictions.lt("CiudadBuscada.latitud",0))
-				.add(Restrictions.lt("CiudadBuscada.longitud", -1)).list();
+				
+				List <Ciudad> miciu = getSession().createCriteria(Ciudad.class)
+						   .createAlias("ubicacion", "UbicacionBuscada")
+						   .add(Restrictions.lt("UbicacionBuscada.latitud", ecuador))
+						   .list();
 				
 				
 				for(Ciudad m: miciu)
 				{
-					assertThat(m.getUbicacion().getLatitud()).isEqualTo(miu.getLatitud());
-					System.out.println(m.getUbicacion().getLatitud());
-					
-					assertThat(m.getUbicacionGeografica()).isEqualTo(mic.getUbicacionGeografica());
-					System.out.println(m.getUbicacionGeografica());
-					
-					assertThat(m.getUbicacion().getLongitud()).isEqualTo(miu.getLongitud());
-					System.out.println(m.getUbicacion().getLongitud());
+					assertThat(m.getUbicacion().getLatitud()).isLessThan(ecuador);
 					
 				
 				}
