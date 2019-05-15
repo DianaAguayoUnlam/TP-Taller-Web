@@ -23,8 +23,6 @@ public class Ciudad {
 	@ManyToOne
 	private Pais pais;
 	
-	@OneToOne
-	private Pais pais2;
 	
 	
 	public Long getId() {
@@ -50,16 +48,6 @@ public class Ciudad {
 
 	public String getNombre() {
 		return nombre;
-	}
-
-
-	public Pais getPais2() {
-		return pais2;
-	}
-
-
-	public void setPais2(Pais pais2) {
-		this.pais2 = pais2;
 	}
 
 

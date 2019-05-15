@@ -18,9 +18,6 @@ public class Ubicacion {
 	@OneToOne
 	private Ciudad ciudad;
 	
-	@OneToOne
-	private Continente continente;
-	
 	
 	public void setId(Long id) {
 		this.id = id;
@@ -64,13 +61,6 @@ public class Ubicacion {
 		this.ciudad = ciudad;
 	}
 
-	public Continente getContinente() {
-		return continente;
-	}
-
-	public void setContinente(Continente continente) {
-		this.continente = continente;
-	}
 
 
 
